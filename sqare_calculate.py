@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from functools import partial
-import  PyQt5.QtCore
+import PyQt5.QtCore
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 #第一个界面（正方形）的类：
@@ -33,10 +33,10 @@ class Ui_Form(object):
         self.lineEdit.setGeometry(QtCore.QRect(230, 200, 113, 21))
         self.lineEdit.setObjectName("lineEdit")
         self.label_3 = QtWidgets.QLabel(Form)
-        self.label_3.setGeometry(QtCore.QRect(100, 340, 121, 20))
+        self.label_3.setGeometry(QtCore.QRect(80, 340, 121, 20))
         self.label_3.setObjectName("label_3")
         self.lineEdit_3 = QtWidgets.QLineEdit(Form)
-        self.lineEdit_3.setGeometry(QtCore.QRect(220, 340, 261, 21))
+        self.lineEdit_3.setGeometry(QtCore.QRect(250, 340, 261, 21))
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.radioButton = QtWidgets.QRadioButton(Form)
         self.radioButton.setGeometry(QtCore.QRect(380, 200, 115, 19))
@@ -97,14 +97,17 @@ class Ui_Form2(object):
 
 #正方形的处理函数
 def convert(ui):
-    input = ui.lineEdit.text()
-    if input=='':
+    input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
+    print(input_1)
+    if input_1=='':
         result="请输入数据！"
     elif ui.radioButton.isChecked()==True:
-        result = float(input)
+        print('1')
+        result = float(input_1)
         result=1*result*result
     elif ui.radioButton_2.isChecked()==True:
-        result = float(input)
+        print('2')
+        result = float(input_1)
         result=2.54*2.54*result*result
     else:
         result='请选择单位！'
