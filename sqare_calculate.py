@@ -269,14 +269,14 @@ class Ui_Form5(object):
 #正方形的处理函数
 def Square_convert(ui):
     input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
-    if input_1=='':
-        result="请输入数据！"
+    if input_1==''or is_number(input_1)==0 or float(input_1)<0:
+        result="请输入合理数据！"
     elif ui.radioButton.isChecked()==True:
         result = float(input_1)
-        result=1*result*result
+        result=format(1*result*result,'.3f')
     elif ui.radioButton_2.isChecked()==True:
         result = float(input_1)
-        result=2.54*2.54*result*result
+        result=format(2.54*2.54*result*result,'.3f')
     else:
         result='请选择单位！'
     ui.lineEdit_3.setText(str(result))
@@ -287,19 +287,21 @@ def rectangle_convert(ui):
     input_2=ui.lineEdit_2.text()
     if input_1==''and input_2=='':
         result='请输入长和宽！'
-    if input_1==''and input_2!='':
+    elif input_1==''and input_2!='':
         result="请输入长！"
-    if input_2==''and input_1!='':
+    elif input_2==''and input_1!='':
         result="请输入宽！"
-    if input_1!=''and input_2!='':
+    elif is_number(input_1) == 0 or float(input_1) < 0 or is_number(input_2) == 0 or float(input_2) < 0:
+            result = "请输入合理数据！"
+    else:
         if ui.radioButton.isChecked()==True:
             input_1=float(input_1)
             input_2=float(input_2)
-            result=1*input_2*input_1
+            result=format(1*input_2*input_1,'.3f')
         elif ui.radioButton_2.isChecked()==True:
             input_1 = float(input_1)
             input_2 = float(input_2)
-            result = 2.54*2.54 * input_2 * input_1
+            result = format(2.54*2.54 * input_2 * input_1,'.3f')
         else:
             result = '请选择单位！'
     ui.lineEdit_3.setText(str(result))
@@ -307,14 +309,14 @@ def rectangle_convert(ui):
 #圆形的处理函数
 def Circle_convert(ui):
     input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
-    if input_1=='':
-        result="请输入数据！"
+    if input_1==''or is_number(input_1)==0 or float(input_1)<0:
+        result="请输入合理数据！"
     elif ui.radioButton.isChecked()==True:
         result = float(input_1)
-        result=1*result*result*math.pi
+        result=format(1*result*result*math.pi,'.3f')
     elif ui.radioButton_2.isChecked()==True:
         result = float(input_1)
-        result=2.54*2.54*result*result*math.pi
+        result=format(2.54*2.54*result*result*math.pi,'.3f')
     else:
         result='请选择单位！'
     ui.lineEdit_3.setText(str(result))
@@ -324,19 +326,34 @@ def Tri_comvert(ui):
     input_1 = ui.lineEdit.text()
     input_2 = ui.lineEdit_2.text()
     input_4 = ui.lineEdit_4.text()
-    a = float(input_1)
-    b = float(input_2)
-    c = float(input_4)
-    s = (a + b + c) / 2
     # 计算面积
-    if input_1!=''and input_2! =''and input_4!='':
+    if input_1!=''and input_2!=''and input_4!=''and is_number(input_1)==1 and is_number(input_2)==1 and is_number(input_4)==1 and float(input_1)>=0 and float(input_2)>=0 and float(input_4)>=0:
+        a = float(input_1)
+        b = float(input_2)
+        c = float(input_4)
+        s = (a + b + c) / 2
         if a+b > c and a+c > b and b+c > a:
-            result = math.sqrt(s * (s - a) * (s - b) * (s - c))
+            result = format(math.sqrt(s * (s - a) * (s - b) * (s - c)),'.3f')
         else:
             result='输入不构成三角形，重新输入！'
     else:
-        result='请输入完整数据！'
+        result='请输入完整合理数据！'
     ui.lineEdit_3.setText(str(result))
+
+#辨别是否为正数
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except(TypeError,ValueError):
+        pass
+    return False
 
 
 #主函数
