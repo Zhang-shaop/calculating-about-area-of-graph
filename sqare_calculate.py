@@ -57,6 +57,7 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "面积为(平方厘米)："))
         self.radioButton.setText(_translate("Form", "cm"))
         self.radioButton_2.setText(_translate("Form", "英寸"))
+        self.pushButton.clicked.connect(partial(convert, ui))  # 这个connect函数没有问题，问题在与类型的转换。
 
 #菜单页面的类
 class Ui_Form2(object):
@@ -128,7 +129,7 @@ if __name__ == '__main__':
     MainWindow = QMainWindow()
     ui = Ui_Form()
     ui.setupUi(MainWindow)
-    ui.pushButton.clicked.connect(partial(convert, ui))  # 这个connect函数没有问题，问题在与类型的转换。
+
 
     #第二个界面
     SecWindow = QMainWindow()
