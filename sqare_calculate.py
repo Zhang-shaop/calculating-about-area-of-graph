@@ -14,6 +14,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from functools import partial
 import PyQt5.QtCore
 from PyQt5 import QtCore, QtGui, QtWidgets
+import math
 
 #第一个界面（正方形）的类：
 class Ui_Form(object):
@@ -53,7 +54,50 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "计算面积！"))
         self.label.setText(_translate("Form", "正方形面积计算器"))
-        self.label_2.setText(_translate("Form", "边长（请输入实数）："))
+        self.label_2.setText(_translate("Form", "边长（请输入正实数）："))
+        self.label_3.setText(_translate("Form", "面积为(平方厘米)："))
+        self.radioButton.setText(_translate("Form", "cm"))
+        self.radioButton_2.setText(_translate("Form", "英寸"))
+
+ # 第三个界面（圆形）的类：
+class Ui_Form4(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(721, 545)
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(230, 250, 241, 28))
+        self.pushButton.setObjectName("pushButton")
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setGeometry(QtCore.QRect(280, 90, 181, 101))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(Form)
+        self.label_2.setGeometry(QtCore.QRect(50, 200, 241, 31))
+        self.label_2.setObjectName("label_2")
+        self.lineEdit = QtWidgets.QLineEdit(Form)
+        self.lineEdit.setGeometry(QtCore.QRect(230, 200, 113, 21))
+        self.lineEdit.setObjectName("lineEdit")
+        self.label_3 = QtWidgets.QLabel(Form)
+        self.label_3.setGeometry(QtCore.QRect(80, 340, 121, 20))
+        self.label_3.setObjectName("label_3")
+        self.lineEdit_3 = QtWidgets.QLineEdit(Form)
+        self.lineEdit_3.setGeometry(QtCore.QRect(250, 340, 261, 21))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.radioButton = QtWidgets.QRadioButton(Form)
+        self.radioButton.setGeometry(QtCore.QRect(380, 200, 115, 19))
+        self.radioButton.setObjectName("radioButton")
+        self.radioButton_2 = QtWidgets.QRadioButton(Form)
+        self.radioButton_2.setGeometry(QtCore.QRect(510, 200, 115, 19))
+        self.radioButton_2.setObjectName("radioButton_2")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.pushButton.setText(_translate("Form", "计算面积！"))
+        self.label.setText(_translate("Form", "圆形面积计算器"))
+        self.label_2.setText(_translate("Form", "半径（请输入正实数）："))
         self.label_3.setText(_translate("Form", "面积为(平方厘米)："))
         self.radioButton.setText(_translate("Form", "cm"))
         self.radioButton_2.setText(_translate("Form", "英寸"))
@@ -66,7 +110,6 @@ class Ui_Form2(object):
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(230, 250, 241, 28))
         self.pushButton.setObjectName("pushButton")
-
 
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(280, 90, 181, 101))
@@ -96,8 +139,135 @@ class Ui_Form2(object):
             self.pushButton_3.setText(_translate("Form", "三角形"))
             self.label.setText(_translate("Form", "请选择图形："))    #已修改
 
+#第二个界面（长方形）的类：（form是3）
+class Ui_Form3(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(721, 545)
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(230, 250, 241, 28))
+        self.pushButton.setObjectName("pushButton")
+
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setGeometry(QtCore.QRect(280, 50, 181, 101))
+        self.label.setObjectName("label")
+
+        self.label_2 = QtWidgets.QLabel(Form)
+        self.label_2.setGeometry(QtCore.QRect(50, 200, 241, 31))
+        self.label_2.setObjectName("label_2")
+
+        self.label_4 = QtWidgets.QLabel(Form)
+        self.label_4.setGeometry(QtCore.QRect(50, 150, 241, 31))
+        self.label_4.setObjectName("label_4")
+
+        self.lineEdit = QtWidgets.QLineEdit(Form)
+        self.lineEdit.setGeometry(QtCore.QRect(230, 200, 113, 21))
+        self.lineEdit.setObjectName("lineEdit")
+
+        self.lineEdit_2 = QtWidgets.QLineEdit(Form)
+        self.lineEdit_2.setGeometry(QtCore.QRect(230, 150, 113, 21))
+        self.lineEdit_2.setObjectName("lineEdit")
+
+        self.label_3 = QtWidgets.QLabel(Form)
+        self.label_3.setGeometry(QtCore.QRect(80, 340, 121, 20))
+        self.label_3.setObjectName("label_3")
+
+        self.lineEdit_3 = QtWidgets.QLineEdit(Form)
+        self.lineEdit_3.setGeometry(QtCore.QRect(250, 340, 261, 21))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+
+        self.radioButton = QtWidgets.QRadioButton(Form)
+        self.radioButton.setGeometry(QtCore.QRect(380, 200, 115, 19))
+        self.radioButton.setObjectName("radioButton")
+
+        self.radioButton_2 = QtWidgets.QRadioButton(Form)
+        self.radioButton_2.setGeometry(QtCore.QRect(510, 200, 115, 19))
+        self.radioButton_2.setObjectName("radioButton_2")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.pushButton.setText(_translate("Form", "计算面积！"))
+        self.label.setText(_translate("Form", "长方形面积计算器"))
+        self.label_2.setText(_translate("Form", "长为（请输入正实数）："))
+        self.label_4.setText(_translate("Form", "宽为（请输入正实数）："))
+        self.label_3.setText(_translate("Form", "面积为(平方厘米)："))
+        self.radioButton.setText(_translate("Form", "cm"))
+        self.radioButton_2.setText(_translate("Form", "英寸"))
+
+#第四个界面（三角形）的类：
+class Ui_Form5(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(721, 545)
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(230, 250, 241, 28))
+        self.pushButton.setObjectName("pushButton")
+
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setGeometry(QtCore.QRect(280, 30, 181, 101))
+        self.label.setObjectName("label")
+
+        self.label_2 = QtWidgets.QLabel(Form)
+        self.label_2.setGeometry(QtCore.QRect(50, 200, 241, 31))
+        self.label_2.setObjectName("label_2")
+
+        self.label_4 = QtWidgets.QLabel(Form)
+        self.label_4.setGeometry(QtCore.QRect(50, 150, 241, 31))
+        self.label_4.setObjectName("label_4")
+
+        self.label_5 = QtWidgets.QLabel(Form)
+        self.label_5.setGeometry(QtCore.QRect(50, 100, 241, 31))
+        self.label_5.setObjectName("label_4")
+
+        self.lineEdit = QtWidgets.QLineEdit(Form)
+        self.lineEdit.setGeometry(QtCore.QRect(230, 200, 113, 21))
+        self.lineEdit.setObjectName("lineEdit")
+
+        self.lineEdit_2 = QtWidgets.QLineEdit(Form)
+        self.lineEdit_2.setGeometry(QtCore.QRect(230, 150, 113, 21))
+        self.lineEdit_2.setObjectName("lineEdit")
+
+        self.lineEdit_4 = QtWidgets.QLineEdit(Form)
+        self.lineEdit_4.setGeometry(QtCore.QRect(230, 100, 113, 21))
+        self.lineEdit_4.setObjectName("lineEdit")
+
+        self.label_3 = QtWidgets.QLabel(Form)
+        self.label_3.setGeometry(QtCore.QRect(80, 340, 121, 20))
+        self.label_3.setObjectName("label_3")
+
+        self.lineEdit_3 = QtWidgets.QLineEdit(Form)
+        self.lineEdit_3.setGeometry(QtCore.QRect(250, 340, 261, 21))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+
+        self.radioButton = QtWidgets.QRadioButton(Form)
+        self.radioButton.setGeometry(QtCore.QRect(380, 200, 115, 19))
+        self.radioButton.setObjectName("radioButton")
+
+        self.radioButton_2 = QtWidgets.QRadioButton(Form)
+        self.radioButton_2.setGeometry(QtCore.QRect(510, 200, 115, 19))
+        self.radioButton_2.setObjectName("radioButton_2")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.pushButton.setText(_translate("Form", "计算面积！"))
+        self.label.setText(_translate("Form", "三角形面积计算器"))
+        self.label_2.setText(_translate("Form", "第三条边（请输入正实数）："))
+        self.label_4.setText(_translate("Form", "第二条边（请输入正实数）："))
+        self.label_5.setText(_translate("Form", "第一条边（请输入正实数）："))
+        self.label_3.setText(_translate("Form", "面积为(平方厘米)："))
+        self.radioButton.setText(_translate("Form", "cm"))
+        self.radioButton_2.setText(_translate("Form", "英寸"))
+
 #正方形的处理函数
-def convert(ui):
+def Square_convert(ui):
     input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
     if input_1=='':
         result="请输入数据！"
@@ -110,6 +280,68 @@ def convert(ui):
     else:
         result='请选择单位！'
     ui.lineEdit_3.setText(str(result))
+
+#长方形处理函数
+def rectangle_convert(ui):
+    input_1=ui.lineEdit.text()
+    input_2=ui.lineEdit_2.text()
+    if input_1==''and input_2=='':
+        result='请输入长和宽！'
+    if input_1==''and input_2!='':
+        result="请输入长！"
+    if input_2==''and input_1!='':
+        result="请输入宽！"
+    if input_1!=''and input_2!='':
+        if ui.radioButton.isChecked()==True:
+            input_1=float(input_1)
+            input_2=float(input_2)
+            result=1*input_2*input_1
+        elif ui.radioButton_2.isChecked()==True:
+            input_1 = float(input_1)
+            input_2 = float(input_2)
+            result = 2.54*2.54 * input_2 * input_1
+        else:
+            result = '请选择单位！'
+    ui.lineEdit_3.setText(str(result))
+
+#圆形的处理函数
+def Circle_convert(ui):
+    input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
+    if input_1=='':
+        result="请输入数据！"
+    elif ui.radioButton.isChecked()==True:
+        result = float(input_1)
+        result=1*result*result*math.pi
+    elif ui.radioButton_2.isChecked()==True:
+        result = float(input_1)
+        result=2.54*2.54*result*result*math.pi
+    else:
+        result='请选择单位！'
+    ui.lineEdit_3.setText(str(result))
+
+#三角型处理函数
+def Tri_comvert(ui):
+    input_1 = ui.lineEdit.text()
+    input_2 = ui.lineEdit_2.text()
+    input_4 = ui.lineEdit_4.text()
+    if input_1!=''and input_2!=''and input_4!='':
+        if input_1+input_4>input_2 and input_2 +input_4>input_1 and input_1+input_2>input_4 and input_2-input_4<input_1 and input_2-input_1<input_4:
+            a = float(input_1)
+            b = float(input_2)
+            c = float(input_4)
+            s = (a + b + c) / 2
+            # 计算面积
+            result = (s * (s - a) * (s - b) * (s - c)) * 0.5
+            if ui.radioButton.isChecked()==True:
+                result=result*1
+            elif ui.radioButton_2.isChecked()==True:
+                result = result * 2.54*2.54
+        else:
+            result='输入不构成三角形，重新输入！'
+    else:
+        result='请输入完整数据！'
+    ui.lineEdit_3.setText(str(result))
+
 
 #主函数
 if __name__ == '__main__':
@@ -125,17 +357,31 @@ if __name__ == '__main__':
     MainWindow = QMainWindow()
     ui = Ui_Form()
     ui.setupUi(MainWindow)
-    ui.pushButton.clicked.connect(partial(convert, ui))
+    ui.pushButton.clicked.connect(partial(Square_convert, ui))
 
     #第二个界面
     SecWindow = QMainWindow()
-    ui2 = Ui_Form()
+    ui2 = Ui_Form3()
     ui2.setupUi(SecWindow)
-    ui2.pushButton.clicked.connect(partial(convert, ui2))
+    ui2.pushButton.clicked.connect(partial(rectangle_convert, ui2))
+
+    #第三个界面(圆形）
+    ThWindow=QMainWindow()
+    ui3 = Ui_Form4()
+    ui3.setupUi(ThWindow)
+    ui3.pushButton.clicked.connect(partial(Circle_convert, ui3))
+
+    # 第四个界面(三角形）
+    FoWindow = QMainWindow()
+    ui4 = Ui_Form5()
+    ui4.setupUi(FoWindow)
+    ui4.pushButton.clicked.connect(partial(Circle_convert, ui4))
 
     #翻页操作
     ui0.pushButton.clicked.connect(partial(MainWindow.show, ))
     ui0.pushButton_1.clicked.connect(partial(SecWindow.show, ))
+    ui0.pushButton_2.clicked.connect(partial(ThWindow.show, ))
+    ui0.pushButton_3.clicked.connect(partial(FoWindow.show, ))
 
     # 因为这个是退出，所以必须把代码放在这个之前。不然就会显示出无效的提示。
     sys.exit(app.exec_())
