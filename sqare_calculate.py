@@ -57,7 +57,6 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "面积为(平方厘米)："))
         self.radioButton.setText(_translate("Form", "cm"))
         self.radioButton_2.setText(_translate("Form", "英寸"))
-        self.pushButton.clicked.connect(partial(convert, ui))  # 这个connect函数没有问题，问题在与类型的转换。
 
 #菜单页面的类
 class Ui_Form2(object):
@@ -67,6 +66,7 @@ class Ui_Form2(object):
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(230, 250, 241, 28))
         self.pushButton.setObjectName("pushButton")
+
 
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(280, 90, 181, 101))
@@ -99,21 +99,17 @@ class Ui_Form2(object):
 #正方形的处理函数
 def convert(ui):
     input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
-    print(input_1)
     if input_1=='':
         result="请输入数据！"
     elif ui.radioButton.isChecked()==True:
-        print('1')
         result = float(input_1)
         result=1*result*result
     elif ui.radioButton_2.isChecked()==True:
-        print('2')
         result = float(input_1)
         result=2.54*2.54*result*result
     else:
         result='请选择单位！'
     ui.lineEdit_3.setText(str(result))
-
 
 #主函数
 if __name__ == '__main__':
@@ -129,13 +125,13 @@ if __name__ == '__main__':
     MainWindow = QMainWindow()
     ui = Ui_Form()
     ui.setupUi(MainWindow)
-
+    ui.pushButton.clicked.connect(partial(convert, ui))
 
     #第二个界面
     SecWindow = QMainWindow()
     ui2 = Ui_Form()
-    ui2.setupUi(MainWindow)
-    ui2.pushButton.clicked.connect(partial(convert, ui))
+    ui2.setupUi(SecWindow)
+    ui2.pushButton.clicked.connect(partial(convert, ui2))
 
     #翻页操作
     ui0.pushButton.clicked.connect(partial(MainWindow.show, ))
