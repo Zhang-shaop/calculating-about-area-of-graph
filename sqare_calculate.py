@@ -324,13 +324,13 @@ def Tri_comvert(ui):
     input_1 = ui.lineEdit.text()
     input_2 = ui.lineEdit_2.text()
     input_4 = ui.lineEdit_4.text()
-    if input_1!=''and input_2!=''and input_4!='':
-        if input_1+input_4>input_2 or input_2 +input_4>input_1 or input_1+input_2>input_4:
-            a = float(input_1)
-            b = float(input_2)
-            c = float(input_4)
-            s = (a + b + c) / 2
-            # 计算面积
+    a = float(input_1)
+    b = float(input_2)
+    c = float(input_4)
+    s = (a + b + c) / 2
+    # 计算面积
+    if input_1!=''and input_2! =''and input_4!='':
+        if a+b > c and a+c > b and b+c > a:
             result = math.sqrt(s * (s - a) * (s - b) * (s - c))
         else:
             result='输入不构成三角形，重新输入！'
