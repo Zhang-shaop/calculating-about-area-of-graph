@@ -325,7 +325,7 @@ def Tri_comvert(ui):
     input_2 = ui.lineEdit_2.text()
     input_4 = ui.lineEdit_4.text()
     if input_1!=''and input_2!=''and input_4!='':
-        if input_1+input_4>input_2 and input_2 +input_4>input_1 and input_1+input_2>input_4 and input_2-input_4<input_1 and input_2-input_1<input_4:
+        if input_1+input_4>input_2 or input_2 +input_4>input_1 or input_1+input_2>input_4:
             a = float(input_1)
             b = float(input_2)
             c = float(input_4)
@@ -371,7 +371,7 @@ if __name__ == '__main__':
     FoWindow = QMainWindow()
     ui4 = Ui_Form5()
     ui4.setupUi(FoWindow)
-    ui4.pushButton.clicked.connect(partial(Circle_convert, ui4))
+    ui4.pushButton.clicked.connect(partial(Tri_comvert, ui4))
 
     #翻页操作
     ui0.pushButton.clicked.connect(partial(MainWindow.show, ))
