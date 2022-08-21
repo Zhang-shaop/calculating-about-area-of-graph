@@ -44,6 +44,21 @@ def rectangle_convert(ui1, ui2, radioButton_isChecked, radioButton_2_isChecked):
             result = '请选择单位！'
     return str(result)
 
+#关于球型函数的重载
+def Circle_convert(ui,radioButton_isChecked,radioButton_2_isChecked):
+    input_1 = ui  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
+    if input_1==''or is_number(input_1)==0 or float(input_1)<0:
+        result="请输入合理数据！"
+    elif radioButton_isChecked==True:
+        result = float(input_1)
+        result=format(1*result*result*math.pi,'.3f')
+    elif radioButton_2_isChecked==True:
+        result = float(input_1)
+        result=format(2.54*2.54*result*result*math.pi,'.3f')
+    else:
+        result='请选择单位！'
+    return str(result)
+
 
 class MyTestCase(unittest.TestCase):
     # 测试正方形的计算函数
@@ -60,6 +75,24 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(Square_convert('e', 1, 0), '请输入合理数据！')
 
         # 测试长方形的计算函数
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert('', 1,1, 0), '请输入长！')
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert(1, '',1, 0), '请输入宽！')
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert('', '', 1, 0), '请输入长和宽！')
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert(1, 1, 0, 0), '请选择单位！')
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert('e', 1, 0, 0), '请输入合理数据！')
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert(-1, 1, 0, 0), '请输入合理数据！')
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert(1, 2, 1, 0),str(format(2, '.3f')) )
+    def test_rectangle_convert4(self):
+        self.assertEqual(rectangle_convert(1, 2, 0, 1),str(format(12.903, '.3f')) )
+
+        #测试球形的计算函数
 
 
 if __name__ == '__main__':
