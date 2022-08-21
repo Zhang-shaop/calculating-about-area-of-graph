@@ -335,11 +335,9 @@ def Tri_comvert(ui):
         if a+b > c and a+c > b and b+c > a:
             result = math.sqrt(s * (s - a) * (s - b) * (s - c))
             if ui.radioButton.isChecked() == True:
-               result = float(input_1)
-               result = format(1 * result * result * math.pi, '.3f')
+               result = format(1 * result , '.3f')
             if ui.radioButton_2.isChecked() == True:
-               result = float(input_1)
-               result = format(2.54 * 2.54 * result * result * math.pi, '.3f')
+               result = format(2.54 * 2.54 * result  , '.3f')
         else:
             result='输入不构成三角形，重新输入！'
     else:

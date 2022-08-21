@@ -138,21 +138,49 @@ import PyQt5.QtCore
 from PyQt5 import QtCore, QtGui, QtWidgets
 import math
 ```
+图形面积计算器的主函数是：sqare_calculate.py
 
-## 4.小组分工
+单元测试代码：test.py
+
+井字棋的主函数是：main.py
+
+历史记录在：history.txt
+
+
+## 4.代码单元测试
+利用重载函数将原文件中的函数带入test.py中测试
+```python
+   #三角形的计算函数
+    def test_Tri_comvert1(self):
+        self.assertEqual(Tri_convert('e', 1,2,1, 0), '请输入完整合理数据！')
+    def test_Tri_comvert2(self):
+        self.assertEqual(Tri_convert('',1, 1, 0,1), '请输入完整合理数据！')
+    def test_Tri_comvert3(self):
+        self.assertEqual(Tri_convert(1,-1, 1,1, 0), '请输入完整合理数据！')
+    def test_Tri_comvert4(self):
+        self.assertEqual(Tri_convert(1,3, 1, 0,1),'输入不构成三角形，重新输入！' )
+    def test_Tri_comvert5(self):
+         self.assertEqual(Tri_convert(3,4,5, 1, 0),str(format(6, '.3f')) )
+    def test_Tri_comvert6(self):
+        self.assertEqual(Tri_convert(3, 4, 5, 0, 1), str(format(38.710, '.3f')))
+
+
+```
+
+## 5.小组分工
 + 软件的交互界面设计：张劭鹏
 + 软件计算功能逻辑：董佳俊
 + 软件的代码测试：张劭鹏，董佳俊，许冲，卜飞扬，王禹翔
 + README文档：张劭鹏
 
-## 5.说明
+## 6.说明
 本次作业的提交:[github地址](https://github.com/Zhang-shaop/calculating-about-area-of-graph)
 
 组长：董佳俊 
 
 联系邮箱：2640573106@qq.com
 
-## 6.兴趣拓展
+## 7.兴趣拓展
 我们小组在学习了《pygame游戏开发实例》之后，也完成了井字棋小游戏的设计。
 可以实现如下功能：
 + 选择人机对战或者好友对战
@@ -160,6 +188,6 @@ import math
 + 每局结束之后可以记录历史对局步骤，保存至history文档中
 + 良好的用户交互界面
 
-## 7.致谢
+## 8.致谢
 感谢助教和王老师一周的教授与答疑，感谢一起工作与学习的队友，感谢认真负责的队长董佳俊。
 
