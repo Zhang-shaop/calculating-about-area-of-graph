@@ -193,6 +193,7 @@ import math
 
 运行效果：
 ![选择界面](pygame_little go\pic4.png)
+
 ![运行界面](pygame_little go\pic5.png)
 
 ## 8.致谢
