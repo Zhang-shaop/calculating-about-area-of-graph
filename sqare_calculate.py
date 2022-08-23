@@ -126,6 +126,9 @@ class Ui_Form4(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
+        """
+        该函数为界面元素赋予新的命名显示
+        """
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "计算面积！"))
@@ -137,7 +140,19 @@ class Ui_Form4(object):
 
 #菜单页面的类
 class Ui_Form2(object):
+    """
+    定义了一个初始菜单界面的类，用来显示需要选择哪个计算模式
+    """
     def setupUi(self, Form):
+        """
+        创建该界面，并创建以下的界面元素：
+        label 提示选择某种计算模式的标签；
+        pushButton 选择计算正方形的面积；
+        pushButton_1 选择计算长方形的面积；
+        pushButton_2 选择计算圆形的面积；
+        pushButton_3 选择计算三角形的面积；
+        同时设置了该窗口的大小以及每个界面元素的大小尺寸
+        """
         Form.setObjectName("Form")
         Form.resize(721, 545)
         self.pushButton = QtWidgets.QPushButton(Form)
@@ -164,6 +179,9 @@ class Ui_Form2(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
+            """
+            该函数为界面元素赋予新的命名显示
+            """
             _translate = QtCore.QCoreApplication.translate
             Form.setWindowTitle(_translate("Form", "Form"))
             self.pushButton.setText(_translate("Form", "正方形"))
@@ -174,7 +192,24 @@ class Ui_Form2(object):
 
 #第二个界面（长方形）的类：（form是3）
 class Ui_Form3(object):
+    """
+    定义一个计算长方形面积的窗口类
+    """
     def setupUi(self, Form):
+        """
+        创建该界面，并创建以下的界面元素：
+        pushButton 确认计算的按钮；
+        label 该页面的标题显示；
+        label_2 提示输入长方形长边长度的显示；
+        label_3 提示数据输出的显示；
+        label_4 提示输入长方形宽边长度的显示；
+        radioButton 选择计算单位为厘米；
+        radioButton_2 选择计算单位为英寸；
+        lineEdit 输入计算所需数据；
+        lineEdit_2 输入计算所需数据；
+        lineEdit_3 输出计算结果；
+        同时设置了该窗口的大小以及每个界面元素的大小尺寸；       
+        """
         Form.setObjectName("Form")
         Form.resize(721, 545)
         self.pushButton = QtWidgets.QPushButton(Form)
@@ -221,6 +256,9 @@ class Ui_Form3(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
+        """
+        该函数为界面元素赋予新的命名显示
+        """
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "计算面积！"))
@@ -233,7 +271,26 @@ class Ui_Form3(object):
 
 #第四个界面（三角形）的类：
 class Ui_Form5(object):
+    """
+    定义一个计算三角形面积的窗口类
+    """
     def setupUi(self, Form):
+        """
+        创建该界面，并创建以下的界面元素：
+        pushButton 确认计算的按钮；
+        label 该页面的标题显示；
+        label_2 提示输入三角形第三条边的显示；
+        label_3 提示输入三角形第二条边的显示；
+        label_4 提示输入三角形第一条边的显示；
+        label_5 提示数据输出的显示；
+        radioButton 选择计算单位为厘米；
+        radioButton_2 选择计算单位为英寸；
+        lineEdit 输入计算所需数据；
+        lineEdit_2 输入计算所需数据；
+        lineEdit_3 输出计算结果；
+        lineEdit_4 输入计算所需数据；
+        同时设置了该窗口的大小以及每个界面元素的大小尺寸；       
+        """
         Form.setObjectName("Form")
         Form.resize(721, 545)
         self.pushButton = QtWidgets.QPushButton(Form)
@@ -288,6 +345,9 @@ class Ui_Form5(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
+        """
+        该函数为界面元素赋予新的命名显示
+        """
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "计算面积！"))
@@ -301,6 +361,10 @@ class Ui_Form5(object):
 
 #正方形的处理函数
 def Square_convert(ui):
+    """
+    该函数主要判定参数输入是否合理，如果没有输入规定的数据或没有选择单位,
+    则输出提示；如果选择数据均正确,则计算正方形面积,并将结果显示到lineEdit_3中
+    """
     input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
     if input_1==''or is_number(input_1)==0 or float(input_1)<0:
         result="请输入合理数据！"
@@ -316,6 +380,10 @@ def Square_convert(ui):
 
 #长方形处理函数
 def rectangle_convert(ui):
+    """
+    该函数主要判定参数输入是否合理，如果没有输入规定的数据或没有选择单位,
+    则输出提示；如果选择数据均正确,则计算正方形面积,并将结果显示到lineEdit_3中
+    """
     input_1=ui.lineEdit.text()
     input_2=ui.lineEdit_2.text()
     if input_1==''and input_2=='':
