@@ -18,7 +18,22 @@ import math
 
 #第一个界面（正方形）的类：
 class Ui_Form(object):
+    """
+    定义一个计算正方形面积的界面类
+    """
     def setupUi(self, Form):
+        """
+        创建该界面，并创建以下的界面元素：
+        pushButton 确认计算的按钮；
+        label 该页面的标题显示；
+        label_2 提示输入数据类型的显示；
+        label_3 提示数据输出的显示；
+        radioButton 选择计算单位为厘米；
+        radioButton_2 选择计算单位为英寸；
+        lineEdit 输入计算所需数据；
+        lineEdit_3 输出计算结果；
+        同时设置了该窗口的大小以及每个界面元素的大小尺寸        
+        """
         Form.setObjectName("Form")
         Form.resize(721, 545)
         self.pushButton = QtWidgets.QPushButton(Form)
@@ -50,6 +65,9 @@ class Ui_Form(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
+        """
+        该函数为界面元素赋予新的命名显示
+        """
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "计算面积！"))
@@ -61,7 +79,22 @@ class Ui_Form(object):
 
  # 第三个界面（圆形）的类：
 class Ui_Form4(object):
+    """
+    定义一个计算正方形面积的窗口类
+    """
     def setupUi(self, Form):
+        """
+        创建该界面，并创建以下的界面元素：
+        pushButton 确认计算的按钮；
+        label 该页面的标题显示；
+        label_2 提示输入数据类型的显示；
+        label_3 提示数据输出的显示；
+        radioButton 选择计算单位为厘米；
+        radioButton_2 选择计算单位为英寸；
+        lineEdit 输入计算所需数据；
+        lineEdit_3 输出计算结果；
+        同时设置了该窗口的大小以及每个界面元素的大小尺寸；       
+        """
         Form.setObjectName("Form")
         Form.resize(721, 545)
         self.pushButton = QtWidgets.QPushButton(Form)
