@@ -409,6 +409,10 @@ def rectangle_convert(ui):
 
 #圆形的处理函数
 def Circle_convert(ui):
+    """
+    该函数主要判定参数输入是否合理，如果没有输入规定的数据或没有选择单位,
+    则输出提示；如果选择数据均正确,则计算圆形面积,并将结果显示到lineEdit_3中
+    """
     input_1 = ui.lineEdit.text()  #这个地方出来问题，不能读入数据了.唯一的可能就在与存在两个窗口出现了问题。
     if input_1==''or is_number(input_1)==0 or float(input_1)<0:
         result="请输入合理数据！"
@@ -424,6 +428,10 @@ def Circle_convert(ui):
 
 #三角型处理函数
 def Tri_comvert(ui):
+    """
+    该函数主要判定参数输入是否合理，如果没有输入规定的数据或没有选择单位,
+    则输出提示；如果选择数据均正确,则计算三角形面积,并将结果显示到lineEdit_3中
+    """
     input_1 = ui.lineEdit.text()
     input_2 = ui.lineEdit_2.text()
     input_4 = ui.lineEdit_4.text()
@@ -447,6 +455,9 @@ def Tri_comvert(ui):
 
 #辨别是否为正数
 def is_number(s):
+    """
+    判断输出的数是否为正数，如果不是则弹出提示
+    """
     try:
         float(s)
         return True
